@@ -1,7 +1,9 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { withPrefix, Link } from "gatsby"
-import $ from 'jquery/dist/jquery.slim'
+import $ from 'jquery';  
+window.jQuery = $; 
+window.$ = $;
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"

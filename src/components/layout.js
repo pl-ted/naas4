@@ -29,18 +29,41 @@ const Layout = ({ children }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          maxWidth: 'none',
+          padding: `0 0rem 0rem`,
         }}
       >
         <main>{children}</main>
-        <footer style={{
-          marginTop: `2rem`
-        }}>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
+        
+<footer className="pt-4  pt-md-5 border-top" style={{color: 'white',}}>
+
+<div className="container-fluid p-1 pl-md-5 pr-md-5">
+      <div className="row d-flex flex-wrap-reverse">
+        <div className="col-10 offset-1 col-sm-9 offset-sm-2 col-md-5 offset-md-1 col-lg-3 offset-lg-1">
+          <h5>National Annuity Advisory Service</h5>
+          <ul className="list-unstyled text-small">
+            <li >NationalAnnuityAdvisoryService.co.uk is a trading name of Performance Leads Ltd, Company Number: 10720622, VAT Number: 276316588, Registered Office: Haggs Farm, Unit 5, Thwaites Barn, Haggs Rd, Harrogate HG3 1EQ.</li>
+          </ul>
+        </div>
+        <div className="col-10 offset-1 col-sm-9 offset-sm-2 col-md-5 offset-md-1 col-lg-3 offset-lg-1">
+          <h5>Performance Leads Limited</h5>
+          <ul className="list-unstyled text-small">
+            <li>Performance Leads Limited is registered with the Information Commissioner&rsquo;s Office, Registration Number ZA247374, <a href="/privacy.html" style={{color:'#ffffff'}}><u>Privacy.</u></a> Tel: <a href="tel:01423423065" style={{color:'#ffffff',}}><u>01423 423065</u></a>, Email: <a href="mailto:support@performance-leads.co.uk" style={{color:'#ffffff',}}><u>support@performance-leads.co.uk</u></a> &copy; 2015 - 2020 Performance Leads Ltd</li>
+          </ul>
+        </div>
+        <div className="mb-4 col-10 offset-1 col-sm-9 offset-sm-2 col-md-10 offset-md-1 col-lg-3 offset-lg-1" style={{background: '#31455F', border: '5px', padding: '3%', align: 'center',}}>
+          <h5>
+            If you are a Financial Advisor and would be interested in working with us, 
+
+            <a style={{color:'white',}} href="https://try.performance-leads.co.uk/try/"> <u>Click here to find out more.</u></a>   
+          </h5>
+        </div>
+      </div>
+    </div> <containerfluid></containerfluid>
+  </footer>
+
+
+        
       </div>
     </>
   )

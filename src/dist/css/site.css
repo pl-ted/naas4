@@ -1,0 +1,214 @@
+.marketing {
+    
+}
+
+.marketing h2{
+    font-weight: 600;
+    color: #31455F;
+}
+
+.featurette {
+    
+}
+
+.featurette h2{
+    font-weight: 600;
+    color: #31455F;
+}
+
+.featurette-heading {
+    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom:20px;
+    font-weight: 400;
+}
+
+
+
+.jumbotron {
+        background-color: #f7f7f7;
+    }
+
+.card {
+    border: none;
+    border-radius: 0rem;
+}
+
+.form-control {
+    font-size: 20px;
+}
+
+
+/*
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon, .carousel-indicators li  {
+   filter: invert(1); 
+}
+
+*/
+
+.carousel-item {
+    height: 28rem;
+}
+
+body {
+          padding-top: 0rem;
+    }
+
+.container {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.formContainerBox {
+    background-color: #31455F;
+    border: 4px solid #42CCAD;
+    border-radius: 5px;
+    padding: 20px 30px;
+    text-align: center;
+    color: white;
+    margin-top: 15%;
+    margin-bottom: 15%;
+  }
+
+
+
+.requiredfield {
+    color: transparent;
+    text-align: center;
+    font-size: 1.4em;
+    padding: 0.2em;
+}
+
+input {
+    border: none;
+    text-align: center;
+    background: white;
+    width:80%;
+    height:2.6em; 
+    position: relative;
+    bottom: 5px;
+    outline: none;
+    border-radius: 0.3em;
+    margin: 8px 0 8px 0;
+    font-size: 18px;
+}
+
+.error-message {
+    color: red;
+}
+
+
+.submitButton {
+    line-height: normal!important;
+    height: 2.5em;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 0.3em!important;
+    border-style: none!important;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 70%;
+    margin: 10px 0 10px 0px!important;
+}
+
+
+
+@media (max-width: 576px) {
+
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    .formContainerBox {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+}
+
+
+@media (max-width: 992px) { 
+
+ }
+
+
+@media (max-width: 1200px) {
+   
+}
+.navbar-light .navbar-nav .nav-link {
+    font-size: 20px;
+}
+
+
+.logoStyle {
+    width: 440px;
+    height: 99px;
+}
+
+@media (max-width: 576px) {
+    
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+    .logoStyle {
+        width: 330px; 
+        height: 80px;
+    }
+}
+
+
+@media (max-width: 992px) { 
+
+ }
+
+
+@media (max-width: 1200px) {
+   
+}
+.footerAboveSection {
+    padding: 90px 0;
+    background-color: #f7f7f7;
+}
+
+.footerAboveContainer {
+    width: 100%;
+}
+
+.footerAboveContainer h3 {
+    color: #31455F;
+    text-align: center;
+    line-height: 52px;
+    font-size: 42px;
+    width: 85%;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #222;
+    padding: 30px 0;
+}
+
+.footerWrapper {
+    width: 100%;
+}
+
+.footerWrapper p {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    color: #fff;
+    line-height: 24px;
+    text-align: center;
+    width: 74%;
+    margin: 0 auto;
+}

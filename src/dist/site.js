@@ -1,10 +1,10 @@
-  function scrollToForm() { var element = document.getElementById('formContainerBox'); element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+import $ from 'jquery';  
+window.jQuery = $; window.$ = $;
+
+function scrollToForm() { var element = document.getElementById('formContainerBox'); element.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 
 
-import $ from 'jquery'; //make sure you have jquery as dependency in package.json
-
-class MyComponent extends Component {
-  componentDidMount() {
+$(document).ready(function () {
 
     var getUrlParameter = function getUrlParameter(sParam) {
         var sPageURL = window.location.search.substring(1),
@@ -54,33 +54,22 @@ class MyComponent extends Component {
     $("*[name='pl_loc_physical_ms']").val(pl_loc_physical_ms).trigger('change');
     $("*[name='pl_loc_interest_ms']").val(pl_loc_interest_ms).trigger('change');
 
-
-}
-};
+});
 
 
 
 
-import $ from 'jquery'; //make sure you have jquery as dependency in package.json
-
-class MyComponent extends Component {
-  componentDidMount() {
+//disable enter button
+$(document).ready(function() {
   $(window).keydown(function(event){
     if(event.keyCode == 13) {
       event.preventDefault();
       return false;
     }
   });
+});
 
-}  
-};
-
-
-
-import $ from 'jquery'; //make sure you have jquery as dependency in package.json
-
-class MyComponent extends Component {
-  componentDidMount() {
+$(document).ready(function () {
     //default at 10th option
     $('select[name="pensionPot"]>option:eq(0)').prop('selected',true);
    
@@ -97,17 +86,11 @@ class MyComponent extends Component {
         $("#step1").show();
 
     });
-
-
-}    
-};
+});
 
 
 
-import $ from 'jquery'; //make sure you have jquery as dependency in package.json
-
-class MyComponent extends Component {
-  componentDidMount() {
+$(document).ready(function(){
         
         $(document).on('click', '#next1', function(){ 
             stepone(); 
@@ -203,5 +186,5 @@ class MyComponent extends Component {
         // scrollToForm();
     }
 
-}
-};
+
+});

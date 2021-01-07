@@ -1,6 +1,7 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { withPrefix, Link } from "gatsby"
+import $ from 'jquery/dist/jquery.slim'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -264,7 +265,11 @@ const IndexPage = () => (
 
 </div>  <container></container>
 </div> <containerfluid></containerfluid>
+<div>
+<Helmet>
 
+</Helmet>
+</div>
 
   </Layout>
 )

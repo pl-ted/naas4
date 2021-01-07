@@ -16,7 +16,7 @@ export const onRenderBody = (
       <script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" type="text/javascript"></script>,
   ])
   setPostBodyComponents([
-      
+      <script src="../dist/site.js"></script>,
     
   ])
 }

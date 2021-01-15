@@ -5,6 +5,7 @@
  */
 
 import React from "react"
+import ReactDOM from 'react-dom';
 
 export const onRenderBody = (
   { setHeadComponents, setPostBodyComponents },
@@ -12,11 +13,10 @@ export const onRenderBody = (
 ) => {
   setHeadComponents([
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>,
-      <script src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" type="text/javascript"></script>,
+
   ])
   setPostBodyComponents([
-      
+
     
   ])
 }

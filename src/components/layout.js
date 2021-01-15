@@ -7,7 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
@@ -33,6 +33,7 @@ const Layout = ({ children }) => {
           padding: `0 0rem 0rem`,
         }}
       >
+      <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
         <main>{children}</main>
         
 <footer className="pt-4  pt-md-5 border-top" style={{color: 'white',}}>
@@ -48,20 +49,17 @@ const Layout = ({ children }) => {
         <div className="col-10 offset-1 col-sm-9 offset-sm-2 col-md-5 offset-md-1 col-lg-3 offset-lg-1">
           <h5>Performance Leads Limited</h5>
           <ul className="list-unstyled text-small">
-            <li>Performance Leads Limited is registered with the Information Commissioner&rsquo;s Office, Registration Number ZA247374, <a href="/privacy.html" style={{color:'#ffffff'}}><u>Privacy.</u></a> Tel: <a href="tel:01423423065" style={{color:'#ffffff',}}><u>01423 423065</u></a>, Email: <a href="mailto:support@performance-leads.co.uk" style={{color:'#ffffff',}}><u>support@performance-leads.co.uk</u></a> &copy; 2015 - 2020 Performance Leads Ltd</li>
+            <li>Performance Leads Limited is registered with the Information Commissioner&rsquo;s Office, Registration Number ZA247374, <a href="/privacy" style={{color:'#ffffff'}}><u>Privacy.</u></a> Tel: <a href="tel:01423423065" style={{color:'#ffffff',}}><u>01423 423065</u></a>, Email: <a href="mailto:support@performance-leads.co.uk" style={{color:'#ffffff',}}><u>support@performance-leads.co.uk</u></a> &copy; 2015 - 2020 Performance Leads Ltd</li>
           </ul>
         </div>
         <div className="mb-4 col-10 offset-1 col-sm-9 offset-sm-2 col-md-10 offset-md-1 col-lg-3 offset-lg-1" style={{background: '#31455F', border: '5px', padding: '3%', align: 'center',}}>
           <h5>
-            If you are a Financial Advisor and would be interested in working with us, 
-
-            <a style={{color:'white',}} href="https://try.performance-leads.co.uk/try/"> <u>Click here to find out more.</u></a>   
+            If you are a Financial Advisor and would be interested in working with us, <Link to="https://try.performance-leads.co.uk/try/"> Click here to find out more.</Link>   
           </h5>
         </div>
       </div>
     </div> <containerfluid></containerfluid>
   </footer>
-
 
         
       </div>

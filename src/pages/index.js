@@ -1,9 +1,8 @@
-import React from "react"
-import Helmet from "react-helmet"
-import { withPrefix, Link } from "gatsby"
-import $ from 'jquery';  
-window.jQuery = $; 
-window.$ = $;
+import React from "react";
+import {
+  BrowserRouter as Router,
+  useLocation
+} from "react-router-dom";
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -19,15 +18,92 @@ import imgProcess1 from "../dist/img/2d5faf48-d771-4d4a-a2c5-dce65039154d.jpg"
 import imgProcess2 from "../dist/img/06b942cb-8d42-4480-bedf-cbe3ca342088.jpg"
 import imgProcess3 from "../dist/img/ddc68430-7456-406c-ac73-658727fda529.jpg"
 
-const IndexPage = () => (
+
+
+class MainPage extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentStep: 1,
+      postcode: '',
+      firstname: '',
+      lastname: '',
+      email:  '',
+      phone: '',
+    }
+  }
+
+  handleChange = event => {
+    const {name, value} = event.target
+    this.setState({
+      [name]: value
+    })    
+  }
+  
+  
+  _next = () => {
+    let currentStep = this.state.currentStep
+    currentStep = currentStep >= 1? 2: currentStep + 1
+    this.setState({
+      currentStep: currentStep
+    })
+  }
+    
+  _prev = () => {
+    let currentStep = this.state.currentStep
+    currentStep = currentStep <= 1? 1: currentStep - 1
+    this.setState({
+      currentStep: currentStep
+    })
+  }
+
+/*
+* the functions for our button
+*/
+previousButton() {
+  let currentStep = this.state.currentStep;
+  if(currentStep !==1){
+    return (
+      <div className="form-group mt-3 col-md-4 text-left">
+           <button type="button" id="backBtn2" name="backBtn2" onClick={this._prev} className="btn btn-primary btn-md " style={{background: '#31455F', border: '2px solid #42CCAD',}}>Back</button>
+      </div>
+    )
+  }
+  return null;
+}
+
+next1Button(){
+  let currentStep = this.state.currentStep;
+  if(currentStep <2){
+    return (  
+      <div className="form-row col-12 text-center">
+           <button type="button" onClick={this._next} id="next2" name="next2" className="btn btn-lg btn-primary col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 mt-3 font-weight-bold" style={{background: '#42CCAD', border: '#42CCAD',}}>NEXT (1 of 2)</button>
+      </div>    
+    )
+  }
+  return null;
+}
+
+submitButton(){
+  let currentStep = this.state.currentStep;
+  if(currentStep ===2){
+    return (  
+      <div className="form-row col-12 text-center">
+           <button type="submit" id="submit" name="submit" className="btn btn-lg btn-primary col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 mt-3 font-weight-bold" style={{background: '#42CCAD', border: '#42CCAD',}}>Compare Now</button>
+      </div>
+    )
+  }
+  return null;
+}
+
+
+  render() {
+    return (
+
   <Layout>
     <SEO title="National Annuity Advisory Service" />
 
-<div>
-    <Helmet>
-        
-    </Helmet>
-</div>
 
 <div className="container-fluid" style={{background: '#f7f7f7',}}>
 <div className="container marketing">
@@ -65,147 +141,54 @@ const IndexPage = () => (
 
       <div className="col-md-6">
         <div className="formContainerBox" id="formContainerBox">
-          <form id="form" name="submit" method="post" data-netlify="true" action="/thankyou/index.html">
-            <fieldset id="step1" >
+	          
+	        <div className="container p-4">
+				<React.Fragment>
+				    <div className="row form-inline">
+		                <div className="col-2 col-sm-2 col-md-2 text-right">
+		                    <img src={imgTick} className="rounded" alt="..."></img>
+		                </div>
+		                <div className="col-10 offset-0 col-sm-10 offset-sm-0 col-md-10   offset-md-0 text-left">
+		                  <h4 className="text pt-2">Compare Annuity Quotes</h4>
+		                </div>
+	              	</div>
 
-            <div className="row form-inline">
-                <div className="col-2 col-sm-2 col-md-2 text-right">
-                    <img src={imgTick} className="rounded" alt="..."></img>
-                </div>
-                <div className="col-10 offset-0 col-sm-10 offset-sm-0 col-md-10   offset-md-0 text-left">
-                  <h4 className="text pt-2">Compare Annuity Quotes</h4>
-                </div>
-              </div>
+	            	<hr style={{background: 'white', border: '1px',}}></hr>
 
-            <hr style={{background: 'white', border: '1px',}}></hr>
+			      <form name="submit" method="post" data-netlify="true" action="thankyou">
+			      {/* 
+			        render the form steps and pass required props in
+			      */}
+			        <Step1 
+			          currentStep={this.state.currentStep} 
+			          handleChange={this.handleChange}
+			          email={this.state.email}
+			        />
+			        <Step2 
+			          currentStep={this.state.currentStep} 
+			          handleChange={this.handleChange}
+			          firstname={this.state.firstname}
+			          lastname={this.state.lastname}
+			          email={this.state.email}
+			          phone={this.state.phone}
+			        />
+			        
+			        {this.next1Button()}
+			        {this.submitButton()}
+			        {this.previousButton()}
 
-
-            <div className="form-row col-12">
-              <label for="postcode" className="h4 col-12 pb-2 text-center">Postcode</label>
-              <input type="text" className="form-control text-left pl-2 pl-sm-2 pl-md-2 pl-lg-5 col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2" name="postcode" id="postcode" placeholder="e.g. HG1" style={{height: '2.2em',}}></input>
-            </div>
-
-              <input   type="hidden" id="pl_matchtype" name="pl_matchtype" value=""></input>
-              <input type="hidden" id="pl_campaignid" name="pl_campaignid" value=""></input>
-              <input type="hidden" id="pl_adgroupid" name="pl_adgroupid" value=""></input>
-              <input type="hidden" id="pl_network" name="pl_network" value=""></input>
-              <input type="hidden" id="pl_device" name="pl_device" value=""></input>
-              <input type="hidden" id="pl_devicemodel" name="pl_devicemodel" value=""></input>
-              <input type="hidden" id="pl_creative" name="pl_creative" value=""></input>
-              <input type="hidden" id="pl_keyword" name="pl_keyword" value=""></input>
-              <input type="hidden" id="pl_adposition" name="pl_adposition" value=""></input>
-              <input type="hidden" id="gclid" name="gclid" value=""></input>
-              <input type="hidden" id="pl_page" name="pl_page" value=""></input>
-              <input type="hidden" id="pl_feeditemid" name="pl_feeditemid" value=""></input>
-              <input type="hidden" id="pl_targetid" name="pl_targetid" value=""></input>  
-              <input type="hidden" id="pl_loc_physical_ms" name="pl_loc_physical_ms" value=""></input>  
-              <input type="hidden" id="pl_loc_interest_ms" name="pl_loc_interest_ms" value=""></input>  
-
-              <input type="hidden" name="pl_siteid" id="pl_siteid" value="19932"></input>
-              <input type="hidden" name="typeOfAdvice" id="typeOfAdvice"  value="annuity" ></input>
-              <input type="hidden" name="pl_associatedsite" id="pl_associatedsite" value="pensionannuityoptions.co.uk"></input>
-              <input type="hidden" name="pl_leadgroupid" id="pl_leadgroupid" value="51530"></input>
-              <input type="hidden" name="F_12_PHONE1" id="form1_F_12_PHONE1" value="0" ></input>
-              <input type="hidden" name="F_1321_GA_CLIENT_ID" id="F_1321_GA_CLIENT_ID"></input>
-
-  
-          <div className="form-row col-12 pt-4 ">
-            <button type="button" id="next1" name="next1" className="btn btn-lg btn-primary col-12 col-sm-10 offset-sm-1 col-md-10 offset-md-1 font-weight-bold" style={{background: '#42CCAD', border: '#42CCAD',}}>NEXT (1 of 2)</button>
-          </div>
-
-          <div className="requiredfield" name="requiredfield2" id="requiredfield2">Your postcode is required</div>
-
-        </fieldset>
-
-        <fieldset id="step2">
+			      </form>
+				</React.Fragment>
+			</div>
 
 
-          <div className="row form-inline">
-                <div className="col-2 col-sm-2 col-md-2 text-right">
-                    <img src={imgTick} className="rounded" alt="..."></img>
-                </div>
-                <div className="col-10 offset-0 col-sm-10 offset-sm-0 col-md-10   offset-md-0 text-left">
-                  <h4 className="text pt-2">Compare Annuity Quotes</h4>
-                </div>
-              </div>
-
-            <hr style={{background: 'white', border: '1px',}}></hr>
-         
-         
-          <div className="form-row col-12">
-            <label for="ageText" className="h4 col-12 pt-2 text-center">Age</label>
-            <input type="text" className="form-control text-center col-10 col-sm-8 offset-2 col-md-8 offset-md-2" name="ageText" id="form1_ageText" placeholder="e.g. 7" style={{height: '2.2em',}}></input>
-          </div>
-
-
-          <div className="form-row col-12 text-center ">
-            <button type="button" id="next2" name="next2" className="btn btn-lg btn-primary col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 mt-3 font-weight-bold" style={{background: '#42CCAD', border: '#42CCAD',}}>Next</button>
-          </div>
-          
-          <div className="requiredfield" name="requiredfield5" id="requiredfield5">All fields are required</div>
-
-          <div className="form-group col-md-4 text-left">
-            <button type="button" id="backBtn2" name="backBtn2" className="btn btn-primary btn-md " style={{background: '#31455F', border: '2px solid #42CCAD',}}>Back</button>
-          </div>
-          
-        </fieldset>
-
-        <fieldset id="step3">
-              <div className="row form-inline">
-                <div className="col-2 col-sm-2 col-md-2 text-right">
-                    <img src={imgTick} className="rounded" alt="..."></img>
-                </div>
-                <div className="col-10 offset-0 col-sm-10 offset-sm-0 col-md-10   offset-md-0 text-left">
-                  <h4 className="text pt-2">Compare Annuity Quotes</h4>
-                </div>
-              </div>
-
-            <hr style={{backgroundcolor: 'white', border: '1px',}}></hr>
-
-              <div>
-                  <div className="input">
-                      <input type="text" id="firstName" name="firstName" placeholder="First Name"  value=""></input>
-                      <div className="error-message"></div>
-                  </div>
-              </div>            
-                            <div>
-                  <div className="input">
-                      <input type="text" id="lastName" name="lastName" placeholder="Last Name"  value=""></input>
-                      <div className="error-message"></div>
-                  </div>
-              </div>
-                            <div>
-                  <div className="input">
-                      <input type="text" id="email" name="email" placeholder="Email"  value=""></input>
-                      <div className="error-message"></div>
-                  </div>
-              </div>
-                            <div>
-                  <div className="input">
-                      <input type="text" id="phone" name="phone" placeholder="Phone"  value=""></input>
-                      <div className="error-message"></div>
-                  </div>
-              </div>
-
-
-            <div className="form-row col-12 text-center">
-              <button type="submit" id="submit" name="submit" className="btn btn-lg btn-primary col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 mt-3 font-weight-bold" style={{background: '#42CCAD', border: '#42CCAD',}}>Compare Now</button>
-            </div>
-
-          <div className="form-group mt-3 col-md-4 text-left">
-            <button type="button" id="backBtn3" name="backBtn3" className="btn btn-primary btn-md " style={{background: '#31455F', border: '2px solid #42CCAD',}}>Back</button>
-          </div>
-
-        </fieldset>
-
-
-          </form>
         </div> <formContainerBox></formContainerBox>
       </div>
     </div>
 
 </div> <containermarketing></containermarketing> 
 </div> <containerfluid></containerfluid>
+
 
 
 <div className="col-10 offset-1 col-sm-10 offset-sm-1 col-md-10 offset-md-1">
@@ -267,13 +250,144 @@ const IndexPage = () => (
 
 </div>  <container></container>
 </div> <containerfluid></containerfluid>
-<div>
-<Helmet>
 
-</Helmet>
+
+<div>
+ 
 </div>
 
   </Layout>
-)
 
-export default IndexPage
+
+    );
+  }
+}
+
+function User({ name }) {
+  return <div>{name}</div>;
+}
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
+function PlnameScreen() {
+  return ( <User name={useQuery().get("name")} /> );
+}
+
+
+
+
+
+
+function Step1(props) {
+  if (props.currentStep !== 1) {
+    return null
+  } 
+  return(
+    <div className="form-group">
+      <label htmlFor="postcode" className="h4 col-12 pb-2 text-center">Enter Your Postcode</label>
+      <input
+        className="form-control text-left pl-2 pl-sm-2 pl-md-2 pl-lg-5 col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2"
+        id="postcode"
+        name="postcode"
+        type="text"
+        placeholder="Postcode"
+        value={props.postcode}
+        onChange={props.handleChange}
+        />
+
+
+	      <input type="hidden" id="pl_matchtype" name="pl_matchtype" value=<Router><PlnameScreen /></Router> ></input>
+	      <input type="hidden" id="pl_campaignid" name="pl_campaignid" value="" ></input>
+	      <input type="hidden" id="pl_adgroupid" name="pl_adgroupid" value="" ></input>
+	      <input type="hidden" id="pl_network" name="pl_network" value=""></input>
+	      <input type="hidden" id="pl_device" name="pl_device" value=""></input>
+	      <input type="hidden" id="pl_devicemodel" name="pl_devicemodel" value=""></input>
+	      <input type="hidden" id="pl_creative" name="pl_creative" value=""></input>
+	      <input type="hidden" id="pl_keyword" name="pl_keyword" value=""></input>
+	      <input type="hidden" id="pl_adposition" name="pl_adposition" value=""></input>
+	      <input type="hidden" id="gclid" name="gclid" value=""></input>
+	      <input type="hidden" id="pl_page" name="pl_page" value=""></input>
+	      <input type="hidden" id="pl_feeditemid" name="pl_feeditemid" value=""></input>
+	      <input type="hidden" id="pl_targetid" name="pl_targetid" value=""></input>  
+	      <input type="hidden" id="pl_loc_physical_ms" name="pl_loc_physical_ms" value=""></input>  
+	      <input type="hidden" id="pl_loc_interest_ms" name="pl_loc_interest_ms" value=""></input>  
+
+	      <input type="hidden" name="pl_siteid" id="pl_siteid" value="19932"></input>
+	      <input type="hidden" name="typeOfAdvice" id="typeOfAdvice"  value="annuity" ></input>
+	      <input type="hidden" name="pl_associatedsite" id="pl_associatedsite" value="pensionannuityoptions.co.uk"></input>
+	      <input type="hidden" name="pl_leadgroupid" id="pl_leadgroupid" value="51530"></input>
+	      <input type="hidden" name="F_12_PHONE1" id="form1_F_12_PHONE1" value="0" ></input>
+	      <input type="hidden" name="F_1321_GA_CLIENT_ID" id="F_1321_GA_CLIENT_ID"></input>
+    </div>
+  );
+}
+
+function Step2(props) {
+  if (props.currentStep !== 2) {
+    return null
+  } 
+  return(
+    <React.Fragment>
+      <div>
+      	  <div className="input">
+		      <input
+		        id="firstname"
+		        name="firstname"
+		        type="text"
+		        placeholder="First Name"
+		        value={props.firstname}
+		        onChange={props.handleChange}
+		        />
+	      </div>
+      </div>
+
+	  <div>
+	  	  <div className="input">
+		      <input
+		        id="lastname"
+		        name="lastname"
+		        type="text"
+		        placeholder="Last Name"
+		        value={props.lastname}
+		        onChange={props.handleChange}
+		        /> 
+	      </div> 
+	  </div>
+
+      <div>
+      	  <div className="input">
+		      <input
+		        id="email"
+		        name="email"
+		        type="text"
+		        placeholder="Email"
+		        value={props.email}
+		        onChange={props.handleChange}
+		        /> 
+	      </div>
+      </div> 
+
+      <div>
+      	  <div className="input">
+		      <input
+		        id="phone"
+		        name="phone"
+		        type="text"
+		        placeholder="Phone"
+		        value={props.phone}
+		        onChange={props.handleChange}
+		        /> 
+	       </div>
+       </div>        
+
+    </React.Fragment>
+  );
+}
+
+const element = MainPage;
+
+export default element
+
+
+
+

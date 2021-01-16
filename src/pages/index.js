@@ -155,7 +155,9 @@ submitButton(){
 
 	            	<hr style={{background: 'white', border: '1px',}}></hr>
 
-			      <form name="submit" method="post" data-netlify="true" action="thankyou">
+			        <form name="nationalannuityadvisoryservice" action="thankyou" method="post" netlify-honeypot="bot-field" data-netlify="true" >
+					<input type="hidden" name="bot-field" />
+			        <input type="hidden" name="form-name" value="nationalannuityadvisoryservice" />
 			      {/* 
 			        render the form steps and pass required props in
 			      */}
@@ -263,20 +265,55 @@ submitButton(){
   }
 }
 
-function User({ name }) {
-  return <div>{name}</div>;
-}
+
 function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
-function PlnameScreen() {
-  return ( <User name={useQuery().get("name")} /> );
+function Param({name, value}) {
+  return <input type="hidden" id={name} name={name} value={value} ></input>;
 }
-
-
-
-
-
+function Pl_campaignid() {
+  return (  < Param name="pl_campaignid" value={useQuery().get("pl_campaignid")}  /> );
+}
+function Pl_adgroupid() {
+  return (  < Param name="pl_adgroupid" value={useQuery().get("pl_adgroupid")}  /> );
+}
+function Pl_network() {
+  return (  < Param name="pl_network" value={useQuery().get("pl_network")}  /> );
+}
+function Pl_device() {
+  return (  < Param name="pl_device" value={useQuery().get("pl_device")}  /> );
+}
+function Pl_devicemodel() {
+  return (  < Param name="pl_devicemodel" value={useQuery().get("pl_devicemodel")}  /> );
+}
+function Pl_creative() {
+  return (  < Param name="pl_creative" value={useQuery().get("pl_creative")}  /> );
+}
+function Pl_keyword() {
+  return (  < Param name="pl_keyword" value={useQuery().get("pl_keyword")}  /> );
+}
+function Pl_adposition() {
+  return (  < Param name="pl_adposition" value={useQuery().get("pl_adposition")}  /> );
+}
+function Gclid() {
+  return (  < Param name="gclid" value={useQuery().get("gclid")}  /> );
+}
+function Pl_page() {
+  return (  < Param name="pl_page" value={useQuery().get("pl_page")}  /> );
+}
+function Pl_feeditemid() {
+  return (  < Param name="pl_feeditemid" value={useQuery().get("pl_feeditemid")}  /> );
+}
+function Pl_targetid() {
+  return (  < Param name="pl_targetid" value={useQuery().get("pl_targetid")}  /> );
+}
+function Pl_loc_physical_ms() {
+  return (  < Param name="pl_loc_physical_ms" value={useQuery().get("pl_loc_physical_ms")}  /> );
+}
+function Pl_loc_interest_ms() {
+  return (  < Param name="pl_loc_interest_ms" value={useQuery().get("pl_loc_interest_ms")}  /> );
+}
 
 function Step1(props) {
   if (props.currentStep !== 1) {
@@ -295,22 +332,20 @@ function Step1(props) {
         onChange={props.handleChange}
         />
 
-
-	      <input type="hidden" id="pl_matchtype" name="pl_matchtype" value=<Router><PlnameScreen /></Router> ></input>
-	      <input type="hidden" id="pl_campaignid" name="pl_campaignid" value="" ></input>
-	      <input type="hidden" id="pl_adgroupid" name="pl_adgroupid" value="" ></input>
-	      <input type="hidden" id="pl_network" name="pl_network" value=""></input>
-	      <input type="hidden" id="pl_device" name="pl_device" value=""></input>
-	      <input type="hidden" id="pl_devicemodel" name="pl_devicemodel" value=""></input>
-	      <input type="hidden" id="pl_creative" name="pl_creative" value=""></input>
-	      <input type="hidden" id="pl_keyword" name="pl_keyword" value=""></input>
-	      <input type="hidden" id="pl_adposition" name="pl_adposition" value=""></input>
-	      <input type="hidden" id="gclid" name="gclid" value=""></input>
-	      <input type="hidden" id="pl_page" name="pl_page" value=""></input>
-	      <input type="hidden" id="pl_feeditemid" name="pl_feeditemid" value=""></input>
-	      <input type="hidden" id="pl_targetid" name="pl_targetid" value=""></input>  
-	      <input type="hidden" id="pl_loc_physical_ms" name="pl_loc_physical_ms" value=""></input>  
-	      <input type="hidden" id="pl_loc_interest_ms" name="pl_loc_interest_ms" value=""></input>  
+	        <Router><Pl_campaignid /></Router>
+			<Router><Pl_adgroupid /></Router>
+			<Router><Pl_network /></Router>
+			<Router><Pl_device /></Router>
+			<Router><Pl_devicemodel /></Router>
+			<Router><Pl_creative /></Router>
+			<Router><Pl_keyword /></Router>
+			<Router><Pl_adposition /></Router>
+			<Router><Gclid /></Router>
+			<Router><Pl_page /></Router>
+			<Router><Pl_feeditemid /></Router>
+			<Router><Pl_targetid /></Router>
+			<Router><Pl_loc_physical_ms /></Router>
+			<Router><Pl_loc_interest_ms /></Router>
 
 	      <input type="hidden" name="pl_siteid" id="pl_siteid" value="19932"></input>
 	      <input type="hidden" name="typeOfAdvice" id="typeOfAdvice"  value="annuity" ></input>

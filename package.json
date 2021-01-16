@@ -16,13 +16,15 @@
     "gatsby-query-params": "^1.2.1",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
+    "history": "^5.0.0",
     "jquery": "^3.5.1",
     "prop-types": "^15.7.2",
     "query-string": "^6.13.8",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "tiny-invariant": "^1.1.0"
   },
   "devDependencies": {
     "gh-pages": "^3.1.0",
